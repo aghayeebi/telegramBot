@@ -21,4 +21,4 @@ Route::get('/', function () {
 Route::get('/dashboard', [BotController::class,'dashboard']);
 
 
-Route::get('/bot', [BotController::class,'start']);
+Route::get('/send-message', [BotController::class,'sendMessage']);
