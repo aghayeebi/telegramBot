@@ -11,7 +11,7 @@ class Api
 
     protected $SERVER = 'https://api.telegram.org/bot';
 
-    protected $token;
+    protected $token ;
     protected $connect_time_out;
     protected $time_out;
     protected $http;
@@ -23,26 +23,20 @@ class Api
         $this->time_out = $time_out;
     }
 
+
+    //sendMessage telegram method
     public function send(string $method, array $params = [], string|null $token = null): object
     {
-        $response = Http::get($this->SERVER . $this->token .'/' .$method, [
-            'chat_id' => $params['chat_id'],
-            'text' => $params['text'],
-        ]);
+        $response = Http::get($this->SERVER . $this->token .'/' .$method,$params);
 
         return $response;
 
+    }
 
-//        $this->http = new http([
-//            'base_url' => $this->SERVER,
-//            'timeout' => $this->time_out,
-//            'connect_time_out' => $this->connect_time_out,
-//            'http_errors' => false,
-//            'headers' => [
-//                'Accept' => 'application/json',
-//                'Accept-Encoding' => 'gzip, deflate, br',
-//            ]
-//        ]);
+    public function show(string $method, array $params = [], string|null $token = null)
+    {
+
+
     }
 
 
@@ -70,5 +64,7 @@ class Api
         return $this;
 
     }
+
+
 
 }

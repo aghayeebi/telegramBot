@@ -18,7 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [BotController::class,'dashboard']);
+Route::get('/dashboard', [BotController::class,'dashboard'])->name('dashboard');
 
-
-Route::get('/send-message', [BotController::class,'sendMessage']);
+Route::post('/send-message', [BotController::class,'sendMessage'])->name('sendMessage');

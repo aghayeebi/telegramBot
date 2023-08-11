@@ -8,21 +8,20 @@ use App\Services\TelegramApi\Api;
 
 class BotController extends Controller
 {
+    protected const API_KEY = '6689708735:AAGun_4CCyaxSxEJYz-0JFVwgHFNg5HjWN4';
+
     public function sendMessage(Request $request)
     {
-        $api = new Api('6689708735:AAGun_4CCyaxSxEJYz-0JFVwgHFNg5HjWN4');
+        $api = new Api(self::API_KEY);
 
-        $method = $request->input('method');
+        $response = $api->send(
+            $request->input('method'),
+            [
+                'chat_id' => $request->input('chat_id'),
+                'text' => $request->input('message')
+            ]);
 
-        $message = $request->input('message');
-        $chatId = $request->input('chat_id');
-
-        $params = [
-            'chat_id' => $chatId,
-            'text' => $message
-        ];
-
-        $res = $api->send($method,$params);
+        return redirect('dashboard');
 
 
         //long polling ----- set web hook
@@ -32,6 +31,7 @@ class BotController extends Controller
 
     public function dashboard()
     {
+//        $api = new Api();
         return view('dashboard');
     }
 }

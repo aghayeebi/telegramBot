@@ -13,11 +13,16 @@
     <title>Bot Manager</title>
 </head>
 <body>
-<div class="flex h-screen justify-center items-center">
+<div class="flex flex-col h-screen justify-center items-center">
     <div class="bg-white p-8 shadow-md rounded-lg">
-        <h1 class="text-2xl font-bold mb-4">Bot manager</h1>
 
-        <form method="get" action="/send-message">
+        <h1 class="text-2xl font-bold mb-4">Bot manager</h1>
+        <div class="">
+
+        </div>
+
+        <form method="post" action="/send-message">
+            @csrf
             <input type="text" value="sendMessage" name='method' class="hidden">
             <label class="block">
                 <input
@@ -38,14 +43,18 @@
             </label>
 
             <button
-                class="btn bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90"
-
-            >
+                class="btn bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90">
                 Send
             </button>
         </form>
 
+
+
     </div>
+
+
+
 </div>
+
 </body>
 </html>
